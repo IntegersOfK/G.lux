@@ -41,5 +41,3 @@ Notes and known issues:
 
 Permissions:
 -Access to all websites is required, because the Chrome Extension needs to be able to modify each website to inject a filter over top of what you're viewing. This Chrome extension does not collect personal information or browsing history in any way. As an open source piece of software, the community is welcome to inspect the source of chrome extensions for malicious intent.
-
-Proud to be Ad-free - Bitcoin donations for the continued development of this project are accepted at 1FahbteZW2WWiWrE9rhoHSeGPGcK7AvXff
