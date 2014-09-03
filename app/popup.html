@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>G.lux Options</title>
+    <script src="jquery-1.10.1.min.js"></script>
+    <script src="popup.js"></script>
+    <script src="color-picker/js/colpick.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="color-picker/css/colpick.css" rel="stylesheet" type="text/css"/>
+    </head>  
+    <body id="mainbody">
+        <h4>Color Temperature</h4>
+        <div class="container" id="maincontainer">
+            <div id="colour"> 
+                <span id="tungsten" data-value="#FF9329"></span>
+                <span id="halogen" data-value="#FFD6AA"></span>
+                <span id="flourescent" data-value="#FFE0E5"></span>
+                <span id="daylight" data-value="#C9E2E1"></span>
+                <span id="black" data-value="#000000"></span>
+                <span id="white" data-value="#FFFFFF"></span>
+                <span id="custom" title="Choose a colour" data-value="Custom" class="color-box"><img src="gnome-color-chooser.png"></span>
+                <span id="off" title="Turn Off" data-value="Off"><img src="no.png"></span>
+            </div>
+            <div id="slider">
+                <label for='trans'>Filter Intensity: </label>
+                <input type='range' id='trans' min='0' max='100' value="100" />
+            </div>
+            <div id="timer">
+                <div id="automatic_timer">
+                    <div>
+                        <label>Change Automatically</label>
+                        <input type="checkbox" id="timer_enabled">
+                    </div>
+                    <div id="timer_startend">
+                        <div>
+                            <label>Sunrise</label>
+                            <select id="timer_endtime_hour">
+                            </select>
+                            <select id="timer_endtime_minute">
+                            </select>
+                        </div>
+                        <div>
+                        <label>Sunset</label>
+                            <select id="timer_starttime_hour">
+                            </select>
+                            <select id="timer_starttime_minute">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="saveBtn">Save - Requires refresh</div>
+        </div>
+    </body>
+</html>

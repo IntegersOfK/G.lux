@@ -1,0 +1,105 @@
+body{
+    font-family:helvetica, arial, sans-serif;
+    text-align:center;
+}
+
+#colour{
+    border:0px;
+    outline:none;
+    border-radius: 5 5 0 0;
+}
+color:after{
+    content:"&#x25BC;";
+    float:right;
+}
+
+#colour span{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+body{
+    width:200px;
+    text-align:center;
+}
+#tungsten{
+    background-color:#FF9329;
+}
+#halogen{
+    background-color:#FFD6AA;
+}
+#flourescent{
+    background-color:#FFE0E5;
+}
+#daylight{
+    background-color:#C9E2E1;
+}
+#black{
+    background-color: #000000;
+}
+#white, #off{
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+}
+.title{
+    padding:10px;
+}
+
+
+#saveBtn{
+    padding:5px;
+    background-color: #DDDDDD;
+    border:1px ridge #999999;
+    margin-top: 10px;
+}
+#saveBtn:hover{
+    cursor:pointer;
+}
+#saveBtn:active{
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+}
+#custom img, #off img{
+    width: 50px;
+    height: 50px;
+}
+
+.colpick{
+    top: 95px!important;
+    left: auto!important;
+    width: 200px!important;
+    height: 240px!important;
+}
+.colpick_new_color{
+    position: absolute!important;
+    left: 6px!important;
+    top: 170px!important;
+    border-right:1px solid #8f8f8f;
+}
+.colpick_current_color{
+    position: absolute!important;
+    left: 7px!important;
+    top: 205px!important;
+    border-right:1px solid #8f8f8f;
+}
+.colpick_hex_field{
+    left: 126px!important;
+    top: 175px!important;
+}
+.colpick_rgb_r {
+    top: 168px!important;
+    left: 47px!important;
+}
+.colpick_rgb_g {
+    top: 192px!important;
+    left: 47px!important;
+}
+.colpick_rgb_b {
+    top: 216px!important;
+    left: 47px!important;
+}
+.colpick_submit{
+   left: 125px!important;
+   top: 205px!important;
+}
