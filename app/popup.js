@@ -132,7 +132,7 @@ function save() {
 					// An error occurred :(
 					console.log("ERROR: ", chrome.runtime.lastError);
 				} else {
-					console.log(response.farewell);
+					//console.log(response.farewell);
 					//window.close();
 				}
 			})
