@@ -133,6 +133,7 @@ function save() {
 					console.log("ERROR: ", chrome.runtime.lastError);
 				} else {
 					console.log(response.farewell);
+					//window.close();
 				}
 			})
 		}

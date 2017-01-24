@@ -1,18 +1,29 @@
-(function() {
-	var temperature = Object();
-	var storedsettings = Object();
-
-	temperature.color = "#FF9329";
-	temperature.alpha = 0.3;
-	temperature.starthour = "01";
-	temperature.startminute = "00";
-	temperature.endhour = "01";
-	temperature.endminute = "00";
-	temperature.timerenabled = false;
-	temperature.iscustom = false;
 
 	function main() {
 		alert('run main');
+		var temperature = Object();
+		var storedsettings = Object();
+
+		temperature.color = "#FF9329";
+		temperature.alpha = 0.3;
+		temperature.starthour = "01";
+		temperature.startminute = "00";
+		temperature.endhour = "01";
+		temperature.endminute = "00";
+		temperature.timerenabled = false;
+		temperature.iscustom = false;
+
+
+		function applycolor() {
+			if (temperature.color == "Off") {
+				return;
+			}
+			$('<div/>', {
+				id : 'coverTemperature'
+			}).appendTo(document.documentElement);
+			$('#coverTemperature').css('background-color', temperature.color);
+			$('#coverTemperature').fadeTo("fast", temperature.alpha);
+		}
 
 		chrome.extension.sendRequest({greeting : "getStoredColor"}, function(response) {
 							try {
@@ -61,19 +72,11 @@
 							} else {
 								applycolor();
 							}
-						});
+		});
 	}
 
-	function applycolor() {
-		if (temperature.color == "Off") {
-			return;
-		}
-		$('<div/>', {
-			id : 'coverTemperature'
-		}).appendTo(document.documentElement);
-		$('#coverTemperature').css('background-color', temperature.color);
-		$('#coverTemperature').fadeTo("fast", temperature.alpha);
-	}
+(function() {
+
 
 	main();
 	
@@ -86,6 +89,8 @@ chrome.runtime.onMessage.addListener(
 		    console.log(sender.tab ?
 		                "from a content script:" + sender.tab.url :
 		                "from the extension");
-		    if (request.greeting)
-		      sendResponse({farewell: "goodbye"});
+		    if (request.greeting == "update"){
+		      sendResponse({farewell: "updated tab"});
+		      main();
+		    }
 		  });
