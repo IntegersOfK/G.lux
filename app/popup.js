@@ -115,6 +115,27 @@ function resetBorder(){
 
 // Saves options to localStorage.
 function save() {
-    localStorage["favorite_colour"] = JSON.stringify(temperature);
-    window.close();
-}
+	localStorage["favorite_colour"] = JSON.stringify(temperature);
+	// Get the active tab
+	chrome.tabs.query({
+		active : true,
+		currentWindow : true
+	}, function(tabs) {
+		// If there is an active tab...
+		if (tabs.length > 0) {
+			// ...send a message requesting the DOM...
+			console.log('sending to:' + tabs[0].id);
+			chrome.tabs.sendMessage(tabs[0].id, {
+				greeting : "update"
+			}, function(response) {
+				if (chrome.runtime.lastError) {
+					// An error occurred :(
+					console.log("ERROR: ", chrome.runtime.lastError);
+				} else {
+					console.log(response.farewell);
+				}
+			})
+		}
+	})
+};
+
