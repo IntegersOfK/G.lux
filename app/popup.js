@@ -118,24 +118,26 @@ function save() {
 	localStorage["favorite_colour"] = JSON.stringify(temperature);
 	// Get the active tab
 	chrome.tabs.query({
-		active : true,
-		currentWindow : true
+		//active : true,
+		//currentWindow : true
 	}, function(tabs) {
 		// If there is an active tab...
 		if (tabs.length > 0) {
-			// ...send a message requesting the DOM...
-			console.log('sending to:' + tabs[0].id);
-			chrome.tabs.sendMessage(tabs[0].id, {
-				greeting : "update"
-			}, function(response) {
-				if (chrome.runtime.lastError) {
-					// An error occurred :(
-					console.log("ERROR: ", chrome.runtime.lastError);
-				} else {
-					//console.log(response.farewell);
-					//window.close();
-				}
-			})
+		    for (var i=0; i<tabs.length; ++i) {
+		        console.log('sending to:' + tabs[i].id);
+				chrome.tabs.sendMessage(tabs[i].id, {
+					greeting : "update"
+				}, function(response) {
+					if (chrome.runtime.lastError) {
+						// An error occurred :(
+						console.log("ERROR: ", chrome.runtime.lastError);
+					} else {
+						//console.log(response.farewell);
+						//window.close();
+					}
+				})
+		    }
+			
 		}
 	})
 };
