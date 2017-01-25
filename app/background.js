@@ -21,7 +21,7 @@ function getDomain(url) { //sanitised a url into a standard domain
 //listener:
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
-	var favorite = localStorage["favorite_colour"];
+	var favorite = localStorage["default_color"];
 	if (!favorite) {
 		//could set the default color here?
 	}

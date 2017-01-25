@@ -11,7 +11,7 @@ function restore_options() {
 		}, function(tabs) {
 			// If there is an active tab...
 			if (tabs.length > 0) {
-				temperature = jQuery.parseJSON(localStorage["favorite_colour"]);
+				temperature = jQuery.parseJSON(localStorage["default_color"]);
 				if (localStorage[getDomain(tabs[0].url)]){
 					favorite = localStorage[getDomain(tabs[0].url)];
 					temperature = jQuery.parseJSON(favorite);
@@ -229,7 +229,7 @@ function preview_color(){
 
 //Saves options to localStorage for default
 function save_default() {
-	localStorage["favorite_colour"] = JSON.stringify(temperature);
+	localStorage["default_color"] = JSON.stringify(temperature);
 	update(true);
 	window.close();
 };
