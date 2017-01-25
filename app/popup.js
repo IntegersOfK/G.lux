@@ -71,7 +71,17 @@ document.addEventListener('DOMContentLoaded', function() {
 			$(this).css({"border-color": "#999999", 
 				"border-width":"3px", 
 				"border-style":"solid"});
-			temperature.color =  $(this).attr("data-value");
+			if ($(this).attr('id') == "off"){
+				temperature.alpha = 0;
+				temperature.color = '#FFFFFF';
+				$("#slider").hide(30);
+				$("#automatic_timer").hide(30);
+			}else{
+				$("#slider").show(30);
+				$("#automatic_timer").show(30);
+				temperature.alpha = $("#trans").val()/100;
+				temperature.color =  $(this).attr("data-value");
+			}
 			preview_color();
 		});
 	});
@@ -113,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			$(el).colpickHide();
 			temperature.color = '#'+hex;
 			temperature.iscustom = true;
+			preview_color();
 		}
 	})
 	.css('background-color', temperature.color);
