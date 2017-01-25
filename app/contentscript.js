@@ -25,12 +25,13 @@ function main() {
 	temperature.endminute = "00";
 	temperature.timerenabled = false;
 	temperature.iscustom = false;
-
+	//alert(document.domain);
 
 	chrome.extension
 			.sendRequest(
 					{
-						greeting : "getStoredColor"
+						greeting : "getStoredColor",
+						domain: document.domain
 					},
 					function(response) {
 						try {
