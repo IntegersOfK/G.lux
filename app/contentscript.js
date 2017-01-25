@@ -63,8 +63,7 @@ function main() {
 							timerend.setMinutes(temperature.endminute);
 
 							if (timerstart > timerend) {
-								if ((currentDate >= timerstart && currentHour <= 24)
-										|| (currentHour >= 1 && currentDate <= timerend)) {
+								if((currentDate >= timerstart && currentHour < 24) || (currentHour >= 0 && currentDate <= timerend )){ 
 									if ((currentDate >= timerstart && currentMinute <= 60)
 											|| (currentMinute >= 0 && currentDate <= timerend)) {
 										applycolor();
