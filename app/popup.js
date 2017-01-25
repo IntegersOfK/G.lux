@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    $("#slider").on("change", function(){ temperature.alpha = $("#trans").val()/100; });
+    $("#slider").on("change", function(){ temperature.alpha = $("#trans").val()/100; save(); });
     
     // Only display the time if the automatic checkbox is checked
     $("#timer_enabled").change(function() {

@@ -16,11 +16,14 @@ function main() {
 		if (temperature.color == "Off") {
 			return;
 		}
-		$('<div/>', {
-			id : 'coverTemperature'
-		}).appendTo(document.documentElement);
+		
+		//$('#coverTemperature').remove();
+		if ($('#coverTemperature').length < 1) {
+			$('body').append("<div id='coverTemperature'></div>");	
+		}
+		
 		$('#coverTemperature').css('background-color', temperature.color);
-		$('#coverTemperature').fadeTo("fast", temperature.alpha);
+		$('#coverTemperature').fadeTo(30, temperature.alpha);
 	}
 
 	chrome.extension
