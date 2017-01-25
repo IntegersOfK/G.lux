@@ -47,7 +47,7 @@ body{
 }
 
 
-#saveBtn{
+.saveBtn{
     padding:5px;
     background-color: #DDDDDD;
     border:1px ridge #999999;

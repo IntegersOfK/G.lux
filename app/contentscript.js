@@ -1,9 +1,23 @@
+var temperature = Object();
+var storedsettings = Object();
+
+function applycolor() {
+	if (temperature.color == "Off") {
+		return;
+	}
+	
+	//$('#coverTemperature').remove();
+	if ($('#coverTemperature').length < 1) {
+		$('body').append("<div id='coverTemperature'></div>");	
+	}
+	
+	$('#coverTemperature').css('background-color', temperature.color);
+	$('#coverTemperature').fadeTo(30, temperature.alpha);
+}
+
 function main() {
 	//alert('run main');
-	var temperature = Object();
-	var storedsettings = Object();
-
-	temperature.color = "#FF9329";
+	temperature.color = "#FF9329"; //default color
 	temperature.alpha = 0.3;
 	temperature.starthour = "01";
 	temperature.startminute = "00";
@@ -12,19 +26,6 @@ function main() {
 	temperature.timerenabled = false;
 	temperature.iscustom = false;
 
-	function applycolor() {
-		if (temperature.color == "Off") {
-			return;
-		}
-		
-		//$('#coverTemperature').remove();
-		if ($('#coverTemperature').length < 1) {
-			$('body').append("<div id='coverTemperature'></div>");	
-		}
-		
-		$('#coverTemperature').css('background-color', temperature.color);
-		$('#coverTemperature').fadeTo(30, temperature.alpha);
-	}
 
 	chrome.extension
 			.sendRequest(
@@ -92,5 +93,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			farewell : "updated tab"
 		});
 		main();
+	} else if (request.greeting == "preview") {
+		incoming = jQuery.parseJSON(request.color);
+		temperature.color = incoming.color;
+		temperature.alpha = incoming.alpha;
+		applycolor();
+
 	}
+
 });
