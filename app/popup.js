@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                          "border-width":"3px", 
                          "border-style":"solid"});
             temperature.color =  $(this).attr("data-value");
+            save();
         });
     });
 
