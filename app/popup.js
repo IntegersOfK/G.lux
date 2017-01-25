@@ -3,7 +3,26 @@ var temperature = Object();
 //Restores select box state to saved value from localStorage.
 function restore_options() {
 	try{
-		temperature = jQuery.parseJSON(localStorage["favorite_colour"]);
+		
+		
+		chrome.tabs.query({
+			active : true,
+			currentWindow : true
+		}, function(tabs) {
+			// If there is an active tab...
+			if (tabs.length > 0) {
+				temperature = jQuery.parseJSON(localStorage["favorite_colour"]);
+				if (localStorage[getDomain(tabs[0].url)]){
+					favorite = localStorage[getDomain(tabs[0].url)];
+					temperature = jQuery.parseJSON(favorite);
+					$('#clearSavedSite').show(0);
+				}else{
+					$('#clearSavedSite').hide(0); //hide the clear if there isn't an override color
+				}
+			}
+		})
+
+		
 	}catch(err){
 		temperature.color = "#FF9329";
 		temperature.alpha = 0.3;
@@ -81,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	$("#saveBtnDefault").on("click", function(){ save_default(); });
 	$("#saveBtnSite").on("click", function(){ save_site(); });
+	$("#clearSavedSite").on("click", function(){ delete_saved_site(); });
 	
 	
 
@@ -200,6 +220,7 @@ function preview_color(){
 function save_default() {
 	localStorage["favorite_colour"] = JSON.stringify(temperature);
 	update(true);
+	window.close();
 };
 
 function getDomain(url) {
@@ -232,6 +253,23 @@ function save_site() {
 			fullurl = tabs[0].url;
 			//alert(getDomain(fullurl));
 			localStorage[getDomain(fullurl)]= JSON.stringify(temperature);
+			update(true);
+			window.close();
+		}
+	})
+}
+
+function delete_saved_site() {
+	chrome.tabs.query({
+		active : true,
+		currentWindow : true
+	}, function(tabs) {
+		// If there is an active tab...
+		if (tabs.length > 0) {
+			fullurl = tabs[0].url;
+			//alert(getDomain(fullurl));
+			localStorage.removeItem(getDomain(fullurl));
+			$('#clearSavedSite').hide(0);
 			update(true);
 		}
 	})

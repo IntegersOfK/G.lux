@@ -52,6 +52,12 @@ body{
     background-color: #DDDDDD;
     border:1px ridge #999999;
     margin-top: 10px;
+    -webkit-user-select: none;  /* make text unselectable Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */
+    cursor: pointer;    
+    
 }
 #saveBtn:hover{
     cursor:pointer;
